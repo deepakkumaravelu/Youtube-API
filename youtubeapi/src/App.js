@@ -3,7 +3,7 @@ import './App.css';
 const API_KEY='AIzaSyAFYd9rPaVlpQlhcytFxotavCzX3tLvOuc';
 
 
-const CHANNEL_NAME ="Rahul";
+const CHANNEL_NAME ="Rahul M";
 
 // URL to search for the channel by name
 const apiUrl = `https://www.googleapis.com/youtube/v3/search?key=${API_KEY}&q=${CHANNEL_NAME}&type=channel&part=id&maxResults=1`;
