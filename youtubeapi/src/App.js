@@ -1,25 +1,40 @@
+import React, { useState, useEffect } from 'react';
 import './App.css';
-const Url="https://api.thecatapi.com/v1/images/search?limit=10&breed_ids=beng&api_key=live_Dk7EGKeq4rae2BpD8SW1zLmop8jTAyD3AYi19s0NMzzaJSmLC5SbT6B0tHisomeO";
-fetch(Url)
-.then(response => response.json())
-.then(data => {
-  // Extract the channel ID from the search results
-  const img = data;
-  if (img) {
-    const channelId = img[0].url;
-    document.querySelector(".imm").src=channelId;
-  } else {
-    console.log(`not found.`);
-  }
-})
-.catch(error => {
-  console.error(`Error searching for the channel: ${error}`);
-});
+
 function App() {
+  const [imgUrl, setImgUrl] = useState('');
+
+  useEffect(() => {
+    const fetchCatImage = async () => {
+      try {
+        const response = await fetch(
+          'https://api.thecatapi.com/v1/images/search?limit=1&breed_ids=beng&api_key=YOUR_API_KEY'
+        );
+
+        if (response.ok) {
+          const data = await response.json();
+          if (data.length > 0) {
+            const imageUrl = data[0].url;
+            setImgUrl(imageUrl);
+          } else {
+            console.log('Image not found.');
+          }
+        } else {
+          console.error('Failed to fetch data from the API');
+        }
+      } catch (error) {
+        console.error(`Error searching for the cat image: ${error}`);
+      }
+    };
+
+    fetchCatImage();
+  }, []);
+
   return (
     <div className="App">
-    <img src="" className="imm" ></img>
+      <img src={imgUrl} alt="Cat" className="imm" />
     </div>
   );
 }
+
 export default App;
