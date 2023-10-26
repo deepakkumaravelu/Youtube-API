@@ -3,6 +3,8 @@ import './App.css';
 
 function App() {
   const [imgUrl, setImgUrl] = useState('');
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     const fetchCatImage = async () => {
@@ -17,13 +19,15 @@ function App() {
             const imageUrl = data[0].url;
             setImgUrl(imageUrl);
           } else {
-            console.log('Image not found.');
+            setError('Image not found.');
           }
         } else {
-          console.error('Failed to fetch data from the API');
+          setError('Failed to fetch data from the API');
         }
       } catch (error) {
-        console.error(`Error searching for the cat image: ${error}`);
+        setError(`Error searching for the cat image: ${error}`);
+      } finally {
+        setLoading(false);
       }
     };
 
@@ -32,7 +36,13 @@ function App() {
 
   return (
     <div className="App">
-      <img src={imgUrl} alt="Cat" className="imm" />
+      {loading ? (
+        <p>Loading...</p>
+      ) : error ? (
+        <p>{error}</p>
+      ) : (
+        <img src={imgUrl} alt="Cat" className="imm" />
+      )}
     </div>
   );
 }
