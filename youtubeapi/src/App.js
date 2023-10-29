@@ -16,8 +16,7 @@ function App() {
         if (response.ok) {
           const data = await response.json();
           if (data.length > 0) {
-            const imageUrl = data[0].url;
-            setImgUrl(imageUrl);
+            setImgUrl(data[0].url);
           } else {
             setError('Image not found.');
           }
@@ -36,13 +35,9 @@ function App() {
 
   return (
     <div className="App">
-      {loading ? (
-        <p>Loading...</p>
-      ) : error ? (
-        <p>{error}</p>
-      ) : (
-        <img src={imgUrl} alt="Cat" className="imm" />
-      )}
+      {loading && <p>Loading...</p>}
+      {error && <p>{error}</p>}
+      {imgUrl && <img src={imgUrl} alt="Cat" className="imm" />}
     </div>
   );
 }
