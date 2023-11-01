@@ -35,6 +35,7 @@ function App() {
 
   return (
     <div className="App">
+      <h1>Cat API Practice</h1>
       {loading && <p>Loading...</p>}
       {error && <p>{error}</p>}
       {imgUrl && <img src={imgUrl} alt="Cat" className="imm" />}
