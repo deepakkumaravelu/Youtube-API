@@ -13,14 +13,20 @@
 //     rl.close();
 //   });
 // });
-const express = require('express')
-const app = express()
-const port = 5000
-const msg= "hello world"
-app.get('/', (req, res) => {
-  res.send(${msg})
-})
+// const express = require('express')
+// const app = express()
+// const port = 5000
+// const msg= "hello world"
+// app.get('/', (req, res) => {
+//   res.send(${msg})
+// })
 
-app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`)
-})
+// app.listen(port, () => {
+//   console.log(`Example app listening on port ${port}`)
+// })
+
+const fs = require("fs");
+fs.readFile('/message.txt', "utf8",(err, data) => {
+  if (err) throw err;
+  console.log(data);
+}); 
