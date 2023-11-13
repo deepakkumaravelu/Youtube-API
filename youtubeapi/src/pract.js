@@ -25,8 +25,12 @@
 //   console.log(`Example app listening on port ${port}`)
 // })
 
-const fs = require("fs");
-fs.readFile('/message.txt', "utf8",(err, data) => {
-  if (err) throw err;
-  console.log(data);
-}); 
+// const fs = require("fs");
+// fs.readFile('/message.txt', "utf8",(err, data) => {
+//   if (err) throw err;
+//   console.log(data);
+// }); 
+
+var silname = require("sillyname");
+var randname=silname();
+console.log(`My name is ${randname}`);
