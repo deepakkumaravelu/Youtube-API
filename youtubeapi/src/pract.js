@@ -30,7 +30,6 @@
 //   if (err) throw err;
 //   console.log(data);
 // }); 
-
-var silname = require("sillyname");
-var randname=silname();
+import generateName from "sillyname"
+var randname=generateName();
 console.log(`My name is ${randname}`);
