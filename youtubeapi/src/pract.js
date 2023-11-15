@@ -31,5 +31,6 @@
 //   console.log(data);
 // }); 
 import generateName from "sillyname"
+import superheroes from 'superheroes';
 var randname=generateName();
-console.log(`My name is ${randname}`);
+console.log(`My name is ${superheroes.random()}`);
